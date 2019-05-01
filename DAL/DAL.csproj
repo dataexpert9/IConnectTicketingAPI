@@ -11,7 +11,16 @@
   </ItemGroup>
 
   <ItemGroup>
+    <Compile Remove="CancelItemReason.cs" />
+    <Compile Remove="Cuisine.cs" />
+    <Compile Remove="Driver.cs" />
     <Compile Remove="DriverML.cs" />
+    <Compile Remove="DriverRating.cs" />
+    <Compile Remove="ReportProblemMessage.cs" />
+    <Compile Remove="Store.cs" />
+    <Compile Remove="StoreCuisine.cs" />
+    <Compile Remove="StoreRating.cs" />
+    <Compile Remove="StoreTiming.cs" />
     <Compile Remove="UserML.cs" />
   </ItemGroup>
 

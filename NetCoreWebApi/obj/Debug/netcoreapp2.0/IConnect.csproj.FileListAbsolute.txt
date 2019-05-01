@@ -1,0 +1,17 @@
+C:\Driver B\Projects\IConnectTicketingAPI\NetCoreWebApi\bin\Debug\netcoreapp2.0\IConnect.deps.json
+C:\Driver B\Projects\IConnectTicketingAPI\NetCoreWebApi\bin\Debug\netcoreapp2.0\IConnect.runtimeconfig.json
+C:\Driver B\Projects\IConnectTicketingAPI\NetCoreWebApi\bin\Debug\netcoreapp2.0\IConnect.runtimeconfig.dev.json
+C:\Driver B\Projects\IConnectTicketingAPI\NetCoreWebApi\bin\Debug\netcoreapp2.0\IConnect.dll
+C:\Driver B\Projects\IConnectTicketingAPI\NetCoreWebApi\bin\Debug\netcoreapp2.0\IConnect.pdb
+C:\Driver B\Projects\IConnectTicketingAPI\NetCoreWebApi\bin\Debug\netcoreapp2.0\BLL.dll
+C:\Driver B\Projects\IConnectTicketingAPI\NetCoreWebApi\bin\Debug\netcoreapp2.0\Component.dll
+C:\Driver B\Projects\IConnectTicketingAPI\NetCoreWebApi\bin\Debug\netcoreapp2.0\DAL.dll
+C:\Driver B\Projects\IConnectTicketingAPI\NetCoreWebApi\bin\Debug\netcoreapp2.0\BLL.pdb
+C:\Driver B\Projects\IConnectTicketingAPI\NetCoreWebApi\bin\Debug\netcoreapp2.0\Component.pdb
+C:\Driver B\Projects\IConnectTicketingAPI\NetCoreWebApi\bin\Debug\netcoreapp2.0\DAL.pdb
+C:\Driver B\Projects\IConnectTicketingAPI\NetCoreWebApi\obj\Debug\netcoreapp2.0\IConnect.csprojResolveAssemblyReference.cache
+C:\Driver B\Projects\IConnectTicketingAPI\NetCoreWebApi\obj\Debug\netcoreapp2.0\IConnect.csproj.CoreCompileInputs.cache
+C:\Driver B\Projects\IConnectTicketingAPI\NetCoreWebApi\obj\Debug\netcoreapp2.0\IConnect.AssemblyInfoInputs.cache
+C:\Driver B\Projects\IConnectTicketingAPI\NetCoreWebApi\obj\Debug\netcoreapp2.0\IConnect.AssemblyInfo.cs
+C:\Driver B\Projects\IConnectTicketingAPI\NetCoreWebApi\obj\Debug\netcoreapp2.0\IConnect.dll
+C:\Driver B\Projects\IConnectTicketingAPI\NetCoreWebApi\obj\Debug\netcoreapp2.0\IConnect.pdb

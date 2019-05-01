@@ -58,24 +58,24 @@ namespace Wasalee.Controllers
             }
         }
 
-        [Route("GetReportProblems")]
-        [HttpGet]
-        public async Task<IActionResult> GetReportProblems(int Type)
-        {
-            CultureType culture = CultureHelper.GetCulture(Request.HttpContext);
+        //[Route("GetReportProblems")]
+        //[HttpGet]
+        //public async Task<IActionResult> GetReportProblems(int Type)
+        //{
+        //    CultureType culture = CultureHelper.GetCulture(Request.HttpContext);
 
-            ReportProblemViewModel response= new ReportProblemViewModel();
-            var problems = _bOCommon.GetReportProblems(Type,culture);
+        //    ReportProblemViewModel response= new ReportProblemViewModel();
+        //    var problems = _bOCommon.GetReportProblems(Type,culture);
 
-            if (problems != null)
-            {
-                Mapper.Map(problems, response.ReportProblems);
-            }
-            else
-                response.ReportProblems = new List<ReportProblemDTO>();
+        //    if (problems != null)
+        //    {
+        //        Mapper.Map(problems, response.ReportProblems);
+        //    }
+        //    else
+        //        response.ReportProblems = new List<ReportProblemDTO>();
 
-            return Ok(new CustomResponse<ReportProblemViewModel> { Message = Global.ResponseMessages.Success, StatusCode = StatusCodes.Status200OK, Result = response });
-        }
+        //    return Ok(new CustomResponse<ReportProblemViewModel> { Message = Global.ResponseMessages.Success, StatusCode = StatusCodes.Status200OK, Result = response });
+        //}
 
 
         [HttpPost]

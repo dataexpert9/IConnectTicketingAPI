@@ -19,23 +19,23 @@ namespace BLL.Implementation
             _dbContext = dbContext;
         }
 
-        public List<Cuisine> HomeCuisines()
-        {
-            return _dbContext.Cuisine.Where(x => x.IsDeleted == false).ToList();
-        }
+        //public List<Cuisine> HomeCuisines()
+        //{
+        //    return _dbContext.Cuisine.Where(x => x.IsDeleted == false).ToList();
+        //}
         
-        public List<Store> HomeRestaurants()
-        {
-            var stores = _dbContext.Store.Include(x=>x.StoreRatings).Where(x =>x.IsFeature==true && x.IsDeleted == false).ToList();
+        //public List<Store> HomeRestaurants()
+        //{
+        //    var stores = _dbContext.Store.Include(x=>x.StoreRatings).Where(x =>x.IsFeature==true && x.IsDeleted == false).ToList();
             
-            if(stores != null)
-            {
-                foreach (var store in stores)
-                {
-                    store.CalculateStoreAverageRating();
-                }
-            }
-            return stores;
-        }
+        //    if(stores != null)
+        //    {
+        //        foreach (var store in stores)
+        //        {
+        //            store.CalculateStoreAverageRating();
+        //        }
+        //    }
+        //    return stores;
+        //}
     }
 }

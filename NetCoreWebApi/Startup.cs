@@ -62,7 +62,7 @@ namespace NetCoreWebApi
             services.AddTransient<IBOSettings, BLLSettings>();
             services.AddTransient<IBOStore, BOStore>();
             services.AddTransient<IBOFetch, BOFetch>();
-            services.AddTransient<IBODriver, BODriver>();
+            //services.AddTransient<IBODriver, BODriver>();
             services.AddTransient<IBOCommon, BOCommon>();
 
 
@@ -112,13 +112,13 @@ namespace NetCoreWebApi
             Mapper.Initialize(cfg =>
         {
             cfg.CreateMap<User, UserDTO>();
-            cfg.CreateMap<Cuisine, CuisineDTO>();
-            cfg.CreateMap<Store, StoreDTO>();
-            cfg.CreateMap<List<Store>, List<StoreDTO>>();
-            cfg.CreateMap<List<Cuisine>, List<CuisineDTO>>();
-            cfg.CreateMap<Driver, DriverDTO>();
-            cfg.CreateMap<RequestItem, RequestItemDTO>();
-            cfg.CreateMap<DriverRating, DriverRatingDTO>();
+            //cfg.CreateMap<Cuisine, CuisineDTO>();
+            //cfg.CreateMap<Store, StoreDTO>();
+            //cfg.CreateMap<List<Store>, List<StoreDTO>>();
+            //cfg.CreateMap<List<Cuisine>, List<CuisineDTO>>();
+            //cfg.CreateMap<Driver, DriverDTO>();
+            cfg.CreateMap<Request, RequestItemDTO>();
+            //cfg.CreateMap<DriverRating, DriverRatingDTO>();
 
             //cfg.CreateMap<UserML, UserDTO>()
             //.ForMember(

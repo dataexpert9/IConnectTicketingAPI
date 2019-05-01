@@ -51,7 +51,7 @@ namespace BLL.Implementation
                     PhoneNo = user.PhoneNo,
                     Password = CryptoHelper.Hash(user.Password),
                     IsNotificationsOn = true,
-                    SignInType = 0,
+                   
                     CreatedDate = DateTime.UtcNow,
                     Status = Convert.ToInt16(Component.Utility.Enums.UserStatus.Inactive),
                     Location = user.Location,

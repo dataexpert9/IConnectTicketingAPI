@@ -1,4 +1,5 @@
-﻿using Newtonsoft.Json;
+﻿using Component.Utility.Enums;
+using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations.Schema;
@@ -16,11 +17,10 @@ namespace DAL
 
         public int Id { get; set; }
 
-        //public string FirstName { get; set; }
+        public string FirstName { get; set; }
 
-        //public string LastName { get; set; }
+        public string LastName { get; set; }
 
-        //public string FullName { get; set; }
         public string FullName { get; set; }
 
         public string Location { get; set; }
@@ -39,32 +39,34 @@ namespace DAL
 
         public DateTime DateofBirth { get; set; }
 
-        public DateTime CreatedDate { get; set; }
-
-        public DateTime? ModifiedDate { get; set; }
-
-        public int? SignInType { get; set; }
+        public UserRoles Role { get; set; }
 
         public short? Status { get; set; }
 
-        public bool EmailConfirmed { get; set; }
+        public bool? EmailConfirmed { get; set; }
 
-        public bool PhoneConfirmed { get; set; }
+        public bool? PhoneConfirmed { get; set; }
 
-        public bool IsNotificationsOn { get; set; }
+        public bool? IsNotificationsOn { get; set; }
+
+        public DateTime CreatedDate { get; set; }
+
+        public DateTime? ModifiedDate { get; set; }
 
         [NotMapped]
         public Token Token { get; set; }
         
         public virtual ICollection<UserDevice> UserDevices { get; set; }
 
-        public virtual ICollection<RequestItem> RequestItem { get; set; }
+        public virtual ICollection<Request> RequestItem { get; set; }
 
-        public virtual ICollection<DriverRating> DriverRating { get; set; }
+        //public virtual ICollection<DriverRating> DriverRating { get; set; }
 
         //public string Location { get; set; }
 
         [NotMapped]
         public Settings Settings { get; set; }
     }
+
+ 
 }

@@ -14,6 +14,6 @@ namespace DAL
         public int RequestItem_Id { get; set; }
 
         [JsonIgnore]
-        public virtual RequestItem RequestItem { get; set; }
+        public virtual Request RequestItem { get; set; }
     }
 }

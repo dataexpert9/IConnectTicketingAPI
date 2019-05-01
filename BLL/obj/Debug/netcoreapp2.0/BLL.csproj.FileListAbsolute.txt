@@ -12,3 +12,16 @@ F:\Projects\Wasalee\WasalLeeAPI\BLL\obj\Debug\netcoreapp2.0\BLL.AssemblyInfo.cs
 F:\Projects\Wasalee\WasalLeeAPI\BLL\obj\Debug\netcoreapp2.0\BLL.csproj.CopyComplete
 F:\Projects\Wasalee\WasalLeeAPI\BLL\obj\Debug\netcoreapp2.0\BLL.dll
 F:\Projects\Wasalee\WasalLeeAPI\BLL\obj\Debug\netcoreapp2.0\BLL.pdb
+C:\Driver B\Projects\IConnectTicketingAPI\BLL\obj\Debug\netcoreapp2.0\BLL.csprojResolveAssemblyReference.cache
+C:\Driver B\Projects\IConnectTicketingAPI\BLL\obj\Debug\netcoreapp2.0\BLL.csproj.CoreCompileInputs.cache
+C:\Driver B\Projects\IConnectTicketingAPI\BLL\obj\Debug\netcoreapp2.0\BLL.AssemblyInfoInputs.cache
+C:\Driver B\Projects\IConnectTicketingAPI\BLL\obj\Debug\netcoreapp2.0\BLL.AssemblyInfo.cs
+C:\Driver B\Projects\IConnectTicketingAPI\BLL\obj\Debug\netcoreapp2.0\BLL.dll
+C:\Driver B\Projects\IConnectTicketingAPI\BLL\obj\Debug\netcoreapp2.0\BLL.pdb
+C:\Driver B\Projects\IConnectTicketingAPI\BLL\bin\Debug\netcoreapp2.0\BLL.deps.json
+C:\Driver B\Projects\IConnectTicketingAPI\BLL\bin\Debug\netcoreapp2.0\BLL.dll
+C:\Driver B\Projects\IConnectTicketingAPI\BLL\bin\Debug\netcoreapp2.0\BLL.pdb
+C:\Driver B\Projects\IConnectTicketingAPI\BLL\bin\Debug\netcoreapp2.0\Component.dll
+C:\Driver B\Projects\IConnectTicketingAPI\BLL\bin\Debug\netcoreapp2.0\DAL.dll
+C:\Driver B\Projects\IConnectTicketingAPI\BLL\bin\Debug\netcoreapp2.0\Component.pdb
+C:\Driver B\Projects\IConnectTicketingAPI\BLL\bin\Debug\netcoreapp2.0\DAL.pdb

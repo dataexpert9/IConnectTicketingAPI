@@ -35,10 +35,10 @@ namespace BLL.Implementation
             return returnModel;
         }
 
-        public List<ReportProblemMessage> GetReportProblems(int Type, CultureType Culture)
-        {
-            return _dbContext.ReportProblemMessage.Where(x => x.Type == Type && x.IsDeleted == false && x.Culture == Culture).ToList();
-        }
+        //public List<ReportProblemMessage> GetReportProblems(int Type, CultureType Culture)
+        //{
+        //    return _dbContext.ReportProblemMessage.Where(x => x.Type == Type && x.IsDeleted == false && x.Culture == Culture).ToList();
+        //}
 
         public bool CancelRequest(CancelRequestBindingModel model)
         {
@@ -46,21 +46,21 @@ namespace BLL.Implementation
 
             if (Request != null)
             {
-                if (Request.Status != (int)RequestItemStatus.Cancelled)
-                {
-                    Request.Status = (int)RequestItemStatus.Cancelled;
-                    Request.CompletedAt = DateTime.UtcNow;
-                    var cancelRequest = _dbContext.CancelItemReason.Add(new CancelItemReason
-                    {
-                        CancelAt = DateTime.UtcNow,
-                        ReportProblemMessage_Id = model.ReportProblemMessage_Id,
-                        RequestItem_Id = model.RequestItem_Id
-                    });
+                //if (Request.Status != (int)RequestItemStatus.Cancelled)
+                //{
+                //    Request.Status = (int)RequestItemStatus.Cancelled;
+                //    Request.CompletedAt = DateTime.UtcNow;
+                //    var cancelRequest = _dbContext.CancelItemReason.Add(new CancelItemReason
+                //    {
+                //        CancelAt = DateTime.UtcNow,
+                //        ReportProblemMessage_Id = model.ReportProblemMessage_Id,
+                //        RequestItem_Id = model.RequestItem_Id
+                //    });
 
-                    _dbContext.SaveChanges();
+                //    _dbContext.SaveChanges();
 
-                    return true;
-                }
+                //    return true;
+                //}
             }
             return false;
         }

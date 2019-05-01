@@ -1,9 +1,16 @@
 ﻿namespace Component.Utility.Enums
 {
-    public enum UserTypes
+    public enum UserRoles
     {
-        User=1,
-        Driver=2
+        Sales=1,
+        NOC=2,
+        RatesManager=3
+    }
+
+    public enum Status
+    {
+        InActive=0,
+        Active=1
     }
 
     public enum Gender
@@ -17,15 +24,10 @@
         Inactive=0,
         Active =1
     }
-    public enum RequestItemStatus
+    public enum RequestStatus
     {
-        Requested,
-        Pending,
-        Delivered,
-        Completed,
-        Cancelled,
-        InProgress
-
+        Pass,
+        Fail
     }
     public enum RequestPaymentStatus
     {

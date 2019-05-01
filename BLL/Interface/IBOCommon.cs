@@ -11,7 +11,7 @@ namespace BLL.Interface
     public interface IBOCommon
     {
         UploadImagesViewModel UploadImages(UploadImagesBindingModel model);
-        List<ReportProblemMessage> GetReportProblems(int Type,CultureType Culture);
+        //List<ReportProblemMessage> GetReportProblems(int Type,CultureType Culture);
         bool CancelRequest(CancelRequestBindingModel model);
     }
 }

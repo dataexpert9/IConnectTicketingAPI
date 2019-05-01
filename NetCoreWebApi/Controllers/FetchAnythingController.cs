@@ -54,8 +54,8 @@ namespace Wasalee.Controllers
                 var requestItem = _bOFetch.RequestItem(model, culture);
                 if (requestItem != null)
                 {
-                    var response = Mapper.Map<RequestItem, RequestItemDTO>(requestItem);
-                    Mapper.Map(requestItem.RequestItemML.FirstOrDefault(x => x.Culture == culture), response);
+                    var response = Mapper.Map<Request, RequestItemDTO>(requestItem);
+                    //Mapper.Map(requestItem.RequestItemML.FirstOrDefault(x => x.Culture == culture), response);
                     return Ok(new CustomResponse<RequestItemDTO> { Message = Global.ResponseMessages.Success, StatusCode = StatusCodes.Status200OK, Result = response });
                 }
                 else
@@ -67,124 +67,124 @@ namespace Wasalee.Controllers
             }
         }
 
-        [Authorize]
-        [HttpGet]
-        [Route("GetMyBookings")]
-        public IActionResult GetMyBookings(int Items = 5, int Page = 0, int? Type = 0)
-        {
-            try
-            {
-                if (!ModelState.IsValid)
-                    return BadRequest(ModelState);
+        //[Authorize]
+        //[HttpGet]
+        //[Route("GetMyBookings")]
+        //public IActionResult GetMyBookings(int Items = 5, int Page = 0, int? Type = 0)
+        //{
+        //    try
+        //    {
+        //        if (!ModelState.IsValid)
+        //            return BadRequest(ModelState);
 
-                var User_Id = Convert.ToInt32(User.GetClaimValue("Id"));
-                CultureType culture = CultureHelper.GetCulture(Request.HttpContext);
+        //        var User_Id = Convert.ToInt32(User.GetClaimValue("Id"));
+        //        CultureType culture = CultureHelper.GetCulture(Request.HttpContext);
 
-                PendingRequestViewModel pendingResponse = new PendingRequestViewModel();
-                HistoryRequestViewModel historyResponse = new HistoryRequestViewModel();
-                //MyBookingsDTO responseModel = new MyBookingsDTO();
+        //        PendingRequestViewModel pendingResponse = new PendingRequestViewModel();
+        //        HistoryRequestViewModel historyResponse = new HistoryRequestViewModel();
+        //        //MyBookingsDTO responseModel = new MyBookingsDTO();
 
-                if (Type == 0)
-                {
-                    #region Get Pending Requests
-                    var PendingRequestItems = _bOFetch.GetPendingRequests(User_Id, Items, Page, culture);
+        //        if (Type == 0)
+        //        {
+        //            #region Get Pending Requests
+        //            var PendingRequestItems = _bOFetch.GetPendingRequests(User_Id, Items, Page, culture);
 
-                    foreach (var req in PendingRequestItems)
-                    {
-                        if (req.Driver_Id != null && req.Driver != null)
-                            req.Driver.AverageRating = _bOFetch.GetDriverRatingOnly(req.Driver_Id.Value);
+        //            foreach (var req in PendingRequestItems)
+        //            {
+        //                if (req.Driver_Id != null && req.Driver != null)
+        //                    req.Driver.AverageRating = _bOFetch.GetDriverRatingOnly(req.Driver_Id.Value);
 
-                    }
+        //            }
 
 
 
-                    if (PendingRequestItems != null)
-                    {
-                        Mapper.Map(PendingRequestItems, pendingResponse.Pending);
-                        for (int i = 0; i < PendingRequestItems.Count; i++)
-                        {
+        //            if (PendingRequestItems != null)
+        //            {
+        //                Mapper.Map(PendingRequestItems, pendingResponse.Pending);
+        //                for (int i = 0; i < PendingRequestItems.Count; i++)
+        //                {
                             
-                            Mapper.Map(PendingRequestItems[i].RequestItemML.FirstOrDefault(y => y.Culture == culture), pendingResponse.Pending[i]);
-                            //if (PendingRequestItems[i].Driver != null)
-                            //    Mapper.Map(PendingRequestItems[i].Driver.DriverML.FirstOrDefault(y => y.Culture == culture), pendingResponse.Pending[i].Driver);
+        //                    Mapper.Map(PendingRequestItems[i].RequestItemML.FirstOrDefault(y => y.Culture == culture), pendingResponse.Pending[i]);
+        //                    //if (PendingRequestItems[i].Driver != null)
+        //                    //    Mapper.Map(PendingRequestItems[i].Driver.DriverML.FirstOrDefault(y => y.Culture == culture), pendingResponse.Pending[i].Driver);
 
-                        }
-                    }
-                    else
-                        pendingResponse.Pending = new List<RequestItemDTO>();
+        //                }
+        //            }
+        //            else
+        //                pendingResponse.Pending = new List<RequestItemDTO>();
 
-                    #endregion
-                    return Ok(new CustomResponse<PendingRequestViewModel> { Message = Global.ResponseMessages.Success, StatusCode = StatusCodes.Status200OK, Result = pendingResponse });
-                }
-                else
-                {
-                    #region Get History Of Requests
-                    var DeliveredOrCompletedRequestItems = _bOFetch.GetDeliveredOrCompletedRequests(User_Id, Items, Page, culture);
-                    if (DeliveredOrCompletedRequestItems != null)
-                    {
-                        Mapper.Map(DeliveredOrCompletedRequestItems, historyResponse.History);
-                        for (int i = 0; i < DeliveredOrCompletedRequestItems.Count; i++)
-                        {
-                            Mapper.Map(DeliveredOrCompletedRequestItems[i].RequestItemML.FirstOrDefault(y => y.Culture == culture), historyResponse.History[i]);
-                            //Mapper.Map(DeliveredOrCompletedRequestItems[i].Driver.DriverML.FirstOrDefault(y => y.Culture == culture), historyResponse.History[i].Driver);
+        //            #endregion
+        //            return Ok(new CustomResponse<PendingRequestViewModel> { Message = Global.ResponseMessages.Success, StatusCode = StatusCodes.Status200OK, Result = pendingResponse });
+        //        }
+        //        else
+        //        {
+        //            #region Get History Of Requests
+        //            var DeliveredOrCompletedRequestItems = _bOFetch.GetDeliveredOrCompletedRequests(User_Id, Items, Page, culture);
+        //            if (DeliveredOrCompletedRequestItems != null)
+        //            {
+        //                Mapper.Map(DeliveredOrCompletedRequestItems, historyResponse.History);
+        //                for (int i = 0; i < DeliveredOrCompletedRequestItems.Count; i++)
+        //                {
+        //                    Mapper.Map(DeliveredOrCompletedRequestItems[i].RequestItemML.FirstOrDefault(y => y.Culture == culture), historyResponse.History[i]);
+        //                    //Mapper.Map(DeliveredOrCompletedRequestItems[i].Driver.DriverML.FirstOrDefault(y => y.Culture == culture), historyResponse.History[i].Driver);
 
-                        }
-                    }
-                    else
-                        historyResponse.History = new List<RequestItemDTO>();
-                    #endregion
-                    return Ok(new CustomResponse<HistoryRequestViewModel> { Message = Global.ResponseMessages.Success, StatusCode = StatusCodes.Status200OK, Result = historyResponse });
-                }
-            }
-            catch (Exception ex)
-            {
-                return StatusCode(Error.LogError(ex));
-            }
-        }
+        //                }
+        //            }
+        //            else
+        //                historyResponse.History = new List<RequestItemDTO>();
+        //            #endregion
+        //            return Ok(new CustomResponse<HistoryRequestViewModel> { Message = Global.ResponseMessages.Success, StatusCode = StatusCodes.Status200OK, Result = historyResponse });
+        //        }
+        //    }
+        //    catch (Exception ex)
+        //    {
+        //        return StatusCode(Error.LogError(ex));
+        //    }
+        //}
 
-        [Authorize]
-        [HttpGet]
-        [Route("GetRequestById")]
-        public IActionResult GetRequestById(int Request_Id)
-        {
-            try
-            {
-                if (!ModelState.IsValid)
-                    return BadRequest(ModelState);
+        //[Authorize]
+        //[HttpGet]
+        //[Route("GetRequestById")]
+        //public IActionResult GetRequestById(int Request_Id)
+        //{
+        //    try
+        //    {
+        //        if (!ModelState.IsValid)
+        //            return BadRequest(ModelState);
 
-                CultureType culture = CultureHelper.GetCulture(Request.HttpContext);
+        //        CultureType culture = CultureHelper.GetCulture(Request.HttpContext);
 
-                RequestItemViewModel responseModel = new RequestItemViewModel();
+        //        RequestItemViewModel responseModel = new RequestItemViewModel();
 
-                #region Get Pending Requests
-                var SingleRequest = _bOFetch.GetRequestById(Request_Id, culture);
-                if (SingleRequest != null)
-                {
-                    if (SingleRequest.Driver_Id != null)
-                        SingleRequest.Driver.AverageRating = _bOFetch.GetDriverRatingOnly(SingleRequest.Driver_Id.Value);
+        //        #region Get Pending Requests
+        //        var SingleRequest = _bOFetch.GetRequestById(Request_Id, culture);
+        //        if (SingleRequest != null)
+        //        {
+        //            if (SingleRequest.Driver_Id != null)
+        //                SingleRequest.Driver.AverageRating = _bOFetch.GetDriverRatingOnly(SingleRequest.Driver_Id.Value);
 
-                    //if (SingleRequest.Driver != null)
-                    //{
-                    //    if (SingleRequest.Driver.DriverRating != null)
-                    //        SingleRequest.Driver.CalculateDriverAverageRating();
-                    //}
-                    responseModel.Request = Mapper.Map<RequestItem, RequestItemDTO>(SingleRequest);
-                    Mapper.Map(SingleRequest.RequestItemML.FirstOrDefault(x => x.Culture == culture), responseModel.Request);
-                    #endregion
+        //            //if (SingleRequest.Driver != null)
+        //            //{
+        //            //    if (SingleRequest.Driver.DriverRating != null)
+        //            //        SingleRequest.Driver.CalculateDriverAverageRating();
+        //            //}
+        //            responseModel.Request = Mapper.Map<RequestItem, RequestItemDTO>(SingleRequest);
+        //            Mapper.Map(SingleRequest.RequestItemML.FirstOrDefault(x => x.Culture == culture), responseModel.Request);
+        //            #endregion
 
-                    return Ok(new CustomResponse<RequestItemViewModel> { Message = Global.ResponseMessages.Success, StatusCode = StatusCodes.Status200OK, Result = responseModel });
-                }
-                else
-                {
-                    return Ok(new CustomResponse<Error> { Message = Global.ResponseMessages.Conflict, StatusCode = StatusCodes.Status409Conflict, Result = new Error { ErrorMessage = "Driver not found." } });
+        //            return Ok(new CustomResponse<RequestItemViewModel> { Message = Global.ResponseMessages.Success, StatusCode = StatusCodes.Status200OK, Result = responseModel });
+        //        }
+        //        else
+        //        {
+        //            return Ok(new CustomResponse<Error> { Message = Global.ResponseMessages.Conflict, StatusCode = StatusCodes.Status409Conflict, Result = new Error { ErrorMessage = "Driver not found." } });
 
-                }
-            }
-            catch (Exception ex)
-            {
-                return StatusCode(Error.LogError(ex));
-            }
-        }
+        //        }
+        //    }
+        //    catch (Exception ex)
+        //    {
+        //        return StatusCode(Error.LogError(ex));
+        //    }
+        //}
 
         //[HttpPost]
         //[Route("GetMyBookings")]
@@ -210,14 +210,14 @@ namespace Wasalee.Controllers
         //    }
         //}
 
-        [Route("GetDistance")]
-        [HttpGet]
-        public async Task<IActionResult> GetDistance()
-        {
-            var resp = _bOFetch.GetDistance();
-            return Ok(new CustomResponse<string> { Message = Global.ResponseMessages.Success, StatusCode = StatusCodes.Status200OK, Result = "" });
+        //[Route("GetDistance")]
+        //[HttpGet]
+        //public async Task<IActionResult> GetDistance()
+        //{
+        //    var resp = _bOFetch.GetDistance();
+        //    return Ok(new CustomResponse<string> { Message = Global.ResponseMessages.Success, StatusCode = StatusCodes.Status200OK, Result = "" });
 
-        }
+        //}
 
     }
 }

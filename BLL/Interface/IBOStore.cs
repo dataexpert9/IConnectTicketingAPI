@@ -7,8 +7,8 @@ namespace BLL.Interface
 {
     public interface IBOStore
     {
-        List<Cuisine> HomeCuisines();
-        List<Store> HomeRestaurants();
+        //List<Cuisine> HomeCuisines();
+        //List<Store> HomeRestaurants();
 
     }
 }

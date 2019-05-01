@@ -21,62 +21,20 @@ namespace BLL.Implementation
             _dbContext = dbContext;
         }
 
-        public RequestItem RequestItem(RequestItemBindingModel model, CultureType culture)
+        public Request RequestItem(RequestItemBindingModel model, CultureType culture)
         {
 
             var Order_Id = Guid.NewGuid().ToString().Substring(0, 6);
 
-            var RequestItem = new RequestItem
+            var RequestItem = new Request
             {
-                DeliveryDate = model.DeliveryDate,
-                DeliveryTime = model.DeliveryTime,
-                IsDeleted = false,
-                PaymentMethod = model.PaymentMethod,
-                PriceRangeFrom = model.PriceRangeFrom,
-                PriceRangeTo = model.PriceRangeTo,
+               
                 Quantity = model.Quantity,
-                Status = (Int16)RequestItemStatus.Requested,
-                User_Id = model.User_Id,
-                DropOffLatitude = model.DropOffLatitude,
-                DropOffLongitude = model.DropOffLongitude,
-                PickUpLatitude = model.PickUpLatitude,
-                PickUpLongitude = model.PickUpLongitude,
-                Price = model.PriceRangeFrom,
-                IsUserRated = false,
+
                 CreatedAt = DateTime.UtcNow
             };
 
-            if (RequestItem.RequestItemML == null)
-                RequestItem.RequestItemML = new List<RequestItemML>();
-
-            RequestItem.RequestItemML.Add(new RequestItemML
-            {
-                Name = model.Name,
-                ItemDescription = model.ItemDescription,
-                DropOffLocation = model.DropOffLocation,
-                PickUpLocation = model.PickUpLocation,
-                Culture = culture
-            });
-
-            //_dbContext.SaveChanges();
-
-
-            if (model.ItemImages != null)
-            {
-                if (RequestItem.RequestItemImages == null)
-                    RequestItem.RequestItemImages = new List<RequestItemImages>();
-                foreach (var item in model.ItemImages)
-                {
-                    RequestItem.RequestItemImages.Add(new RequestItemImages
-                    {
-                        ImageUrl = item
-                    });
-                    //_dbContext.RequestItemImages.Add(new RequestItemImages {
-                    //    ImageUrl=item,
-                    //    RequestItem_Id=RequestItem.Id
-                    //});
-                }
-            }
+        
             _dbContext.RequestItem.Add(RequestItem);
             _dbContext.SaveChanges();
 
@@ -101,43 +59,43 @@ namespace BLL.Implementation
         //    return true;
         //}
 
-        public double GetDistance()
-        {
-            Location loc = new Location(_dbContext);
-            var store = _dbContext.Store.FirstOrDefault();
-            loc.Longitude = 55.22;
-            loc.Latitude = 33.55;
-            var distance = store.Location.Distance(loc);
+        //public double GetDistance()
+        //{
+        //    Location loc = new Location(_dbContext);
+        //    var store = _dbContext.Store.FirstOrDefault();
+        //    loc.Longitude = 55.22;
+        //    loc.Latitude = 33.55;
+        //    var distance = store.Location.Distance(loc);
 
-            //var aa = store.Location.Distance(loc);
-            return distance;
-        }
+        //    //var aa = store.Location.Distance(loc);
+        //    return distance;
+        //}
 
-        public List<RequestItem> GetPendingRequests(int User_Id, int Items, int Page, CultureType culture)
-        {
-            return _dbContext.RequestItem.Include(x => x.RequestItemML).Include(x => x.RequestItemImages).Include(x => x.Driver).Where(x => (x.Status == (int)RequestItemStatus.Pending || x.Status == (int)RequestItemStatus.Requested || x.Status == (int)RequestItemStatus.InProgress) && x.User_Id == User_Id && x.IsDeleted == false).Skip(Items * Page).Take(Items).OrderByDescending(x => x.Id).ToList();
-        }
+        //public List<RequestItem> GetPendingRequests(int User_Id, int Items, int Page, CultureType culture)
+        //{
+        //    return _dbContext.RequestItem.Include(x => x.RequestItemML).Include(x => x.RequestItemImages).Include(x => x.Driver).Where(x => (x.Status == 1 || x.Status == 1 || x.Status == 1) && x.User_Id == User_Id && x.IsDeleted == false).Skip(Items * Page).Take(Items).OrderByDescending(x => x.Id).ToList();
+        //}
 
-        public List<RequestItem> GetDeliveredOrCompletedRequests(int User_Id, int Items, int Page, CultureType culture)
-        {
-            return _dbContext.RequestItem.Include(x => x.RequestItemML).Include(x => x.RequestItemImages).Include(x => x.Driver).Where(x => (x.Status == (int)RequestItemStatus.Delivered || x.Status == (int)RequestItemStatus.Completed || x.Status == (int)RequestItemStatus.Cancelled) && x.User_Id == User_Id && x.IsDeleted == false).Skip(Items * Page).Take(Items).OrderByDescending(x => x.Id).ToList();
-        }
+        //public List<RequestItem> GetDeliveredOrCompletedRequests(int User_Id, int Items, int Page, CultureType culture)
+        //{
+        //    return _dbContext.RequestItem.Include(x => x.RequestItemML).Include(x => x.RequestItemImages).Include(x => x.Driver).Where(x => (x.Status == 1 || x.Status == 1 || x.Status == 1) && x.User_Id == User_Id && x.IsDeleted == false).Skip(Items * Page).Take(Items).OrderByDescending(x => x.Id).ToList();
+        //}
 
-        public RequestItem GetRequestById(int Request_Id, CultureType culture)
-        {
-            return _dbContext.RequestItem.Include(x => x.RequestItemML).Include(x => x.RequestItemImages).Include(x => x.Driver).Include(x => x.DriverRating).Include(x => x.DriverRating.User).Include(x => x.User).FirstOrDefault(x => x.Id == Request_Id);
-        }
+        //public RequestItem GetRequestById(int Request_Id, CultureType culture)
+        //{
+        //    return _dbContext.RequestItem.Include(x => x.RequestItemML).Include(x => x.RequestItemImages).Include(x => x.Driver).Include(x => x.DriverRating).Include(x => x.DriverRating.User).Include(x => x.User).FirstOrDefault(x => x.Id == Request_Id);
+        //}
 
-        public double GetDriverRatingOnly(int Driver_Id)
-        {
-            double AverageRating = 0.0;
-            var rating = _dbContext.Drivers.Include(x => x.DriverRating).FirstOrDefault(x => x.Id == Driver_Id);
-            if (rating.DriverRating != null && rating.DriverRating.Count>0)
-                AverageRating = Convert.ToDouble(rating.DriverRating.Where(x => x.Type == (int)RatingTypes.RateDriver).Average(x => x.Rating).ToString("F2"));
+        //public double GetDriverRatingOnly(int Driver_Id)
+        //{
+        //    double AverageRating = 0.0;
+        //    var rating = _dbContext.Drivers.Include(x => x.DriverRating).FirstOrDefault(x => x.Id == Driver_Id);
+        //    if (rating.DriverRating != null && rating.DriverRating.Count>0)
+        //        AverageRating = Convert.ToDouble(rating.DriverRating.Where(x => x.Type == (int)RatingTypes.RateDriver).Average(x => x.Rating).ToString("F2"));
 
-            return AverageRating;
+        //    return AverageRating;
 
-        }
+        //}
 
 
     }

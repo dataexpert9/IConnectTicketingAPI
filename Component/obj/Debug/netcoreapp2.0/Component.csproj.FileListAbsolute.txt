@@ -24,3 +24,12 @@ F:\Projects\Wasalee\WasalLeeAPI\Component\obj\Debug\netcoreapp2.0\Component.Asse
 F:\Projects\Wasalee\WasalLeeAPI\Component\obj\Debug\netcoreapp2.0\Component.AssemblyInfo.cs
 F:\Projects\Wasalee\WasalLeeAPI\Component\obj\Debug\netcoreapp2.0\Component.dll
 F:\Projects\Wasalee\WasalLeeAPI\Component\obj\Debug\netcoreapp2.0\Component.pdb
+C:\Driver B\Projects\IConnectTicketingAPI\Component\bin\Debug\netcoreapp2.0\Component.deps.json
+C:\Driver B\Projects\IConnectTicketingAPI\Component\bin\Debug\netcoreapp2.0\Component.dll
+C:\Driver B\Projects\IConnectTicketingAPI\Component\bin\Debug\netcoreapp2.0\Component.pdb
+C:\Driver B\Projects\IConnectTicketingAPI\Component\obj\Debug\netcoreapp2.0\Component.csprojResolveAssemblyReference.cache
+C:\Driver B\Projects\IConnectTicketingAPI\Component\obj\Debug\netcoreapp2.0\Component.csproj.CoreCompileInputs.cache
+C:\Driver B\Projects\IConnectTicketingAPI\Component\obj\Debug\netcoreapp2.0\Component.AssemblyInfoInputs.cache
+C:\Driver B\Projects\IConnectTicketingAPI\Component\obj\Debug\netcoreapp2.0\Component.AssemblyInfo.cs
+C:\Driver B\Projects\IConnectTicketingAPI\Component\obj\Debug\netcoreapp2.0\Component.dll
+C:\Driver B\Projects\IConnectTicketingAPI\Component\obj\Debug\netcoreapp2.0\Component.pdb
